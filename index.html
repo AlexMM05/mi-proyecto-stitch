@@ -1,81 +1,191 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="./styles.css" rel="stylesheet" />
+    <title>Pokédex Handy909</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./styles.css">
 </head>
-<body>
-    <header>
-        <div class="container-fluid">
-            <div class="row bg-primary">
-                <div class="col-12 col-md-2 logo-container d-flex justify-content-center">
-                    <img src="img/logo.png" class="img-fluid w-50">
-                    <span class="my-auto">POKEDEX</span>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-                <div class="col-12 col-md-8 navbar-container">
-                    <nav class="navbar navbar-expand-lg">
-                        <div class="container-fluid">
-                            
-                            <div class="collapse navbar-collapse" id="navbarNav">
-                                <ul class="navbar-nav main-menu">
-                                    <li class="nav-item">
-                                        <a class="nav-link" aria-current="page" href="#">Home</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Features</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Pricing</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">4</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-                <div class="col-12 col-md-2">
+<body class="pokedex-body">
 
-                </div>
-                 
+    <header class="top-nav">
+        <div class="nav-left">
+            <div class="sensor-gem"></div>
+            <div class="indicator-leds">
+                <span class="led red"></span>
+                <span class="led yellow"></span>
+                <span class="led green"></span>
+            </div>
+            <div class="brand">
+                <span class="brand-title">POKÉDEX</span>
+                <span class="brand-sub">MODEL HANDY909</span>
             </div>
         </div>
-    </header>
-    <main>
-        <div class="container-fluid">
-         
-                <div class="row p-3">
-                    <div class="col-12">
-                        <form class="row">
-                            <div class="col-4">
-                                <div class="input-group form-search-input-container">
-                                    <span class="input-group-text">
-                                        <i class="bi bi-search"></i>
-                                    </span>
-                                    <input type="text" class="form-control" placeholder="Pokemon" name="pokemonSearch">
-                                </div>
-                               
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-12" style="background-color: yellow;">
-                        
-                    </div>
-                </div>  
-              
+        <nav class="nav-links">
+            <a href="#" class="active">KANTO DEX</a>
+            <a href="#">TYPE MATCHUPS</a>
+            <a href="#">CRIES ARCHIVE</a>
+            <a href="#">DIAGNOSTICS</a>
+        </nav>
+        <div class="nav-right">
+            <div class="status-badge"><i class="bi bi-soundwave"></i> VOX READY</div>
         </div>
+    </header>
+
+    <div class="control-panel">
+        <form id="search-form" class="search-box">
+            <i class="bi bi-search"></i>
+            <input type="text" id="search-input" name="query" placeholder="BUSCAR POKÉMON (Nº O NOMBRE)..." autocomplete="off">
+            <button type="button" id="reset-btn" class="ctrl-btn">RESET</button>
+        </form>
+        <div class="filter-group">
+            <span class="filter-label">FILTRO:</span>
+            <button class="filter-pill active" data-type="all">TODOS</button>
+            <button class="filter-pill" data-type="grass">PLANTA</button>
+            <button class="filter-pill" data-type="fire">FUEGO</button>
+            <button class="filter-pill" data-type="water">AGUA</button>
+            <button class="filter-pill" data-type="electric">ELÉC</button>
+            <button class="filter-pill" data-type="psychic">PSI</button>
+        </div>
+    </div>
+
+    <main class="dex-chassis">
+
+        <section class="screen-panel">
+            <div class="scan-matrix-screen">
+                <div class="matrix-topbar">
+                    <span id="screen-meta-id">ID: #025 • PIKACHU</span>
+                    <span>MODE: OPTIC-CAPTURE (&bull;)</span>
+                </div>
+                <div class="matrix-display">
+                    <img id="pokemon-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png" alt="Pokemon Sprite">
+                </div>
+                <div class="matrix-bottombar">
+                    <span class="cry-synth"><i class="bi bi-soundwave"></i> CRY SYNTH:</span>
+                    <div class="sound-bars">
+                        <span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+                <div class="screen-speaker-grille">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+
+            <div class="nav-arrows">
+                <button id="prev-btn" class="arrow-btn">&larr; #024 ARBOK</button>
+                <button id="next-btn" class="arrow-btn">#026 RAICHU &rarr;</button>
+            </div>
+
+            <div class="bottom-controls">
+                <button class="info-btn">INFO CRYO</button>
+                <div class="pill-indicators">
+                    <span class="pill-ind red"></span>
+                    <span class="pill-ind black"></span>
+                </div>
+                <div class="dpad">
+                    <div class="dpad-btn up"></div>
+                    <div class="dpad-btn right"></div>
+                    <div class="dpad-btn down"></div>
+                    <div class="dpad-btn left"></div>
+                    <div class="dpad-center"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="data-panel">
+            <div class="info-card">
+                <div class="info-header">
+                    <h2 id="dex-number-name">#025 PIKACHU</h2>
+                    <span id="dex-type-badge" class="type-badge">ELEC</span>
+                </div>
+
+                <div class="vitals-row">
+                    <div>
+                        <span class="vital-label">ESPECIE</span>
+                        <p id="dex-species">Pokémon Ratón</p>
+                    </div>
+                    <div>
+                        <span class="vital-label">ALTURA</span>
+                        <p id="dex-height">0.4 m</p>
+                    </div>
+                    <div>
+                        <span class="vital-label">PESO</span>
+                        <p id="dex-weight">6.0 kg</p>
+                    </div>
+                </div>
+
+                <div class="entry-box">
+                    <div class="entry-title"><i class="bi bi-journal-text"></i> REGISTRO OFICIAL KANTO:</div>
+                    <p id="dex-description">"Cuando varios de estos POKEMON se juntan, su electricidad puede acumularse y causar tormentas eléctricas con relámpagos."</p>
+                </div>
+
+                <div class="stats-container">
+                    <div class="stat-line">
+                        <span class="stat-name">PS (HP)</span>
+                        <div class="stat-bar-track"><div id="hp-bar" class="stat-bar-fill" style="width: 35%;"></div></div>
+                        <span id="hp-val" class="stat-value">35</span>
+                    </div>
+                    <div class="stat-line">
+                        <span class="stat-name">ATAQUE</span>
+                        <div class="stat-bar-track"><div id="atk-bar" class="stat-bar-fill" style="width: 55%;"></div></div>
+                        <span id="atk-val" class="stat-value">55</span>
+                    </div>
+                    <div class="stat-line">
+                        <span class="stat-name">DEFENSA</span>
+                        <div class="stat-bar-track"><div id="def-bar" class="stat-bar-fill" style="width: 40%;"></div></div>
+                        <span id="def-val" class="stat-value">40</span>
+                    </div>
+                    <div class="stat-line">
+                        <span class="stat-name">VELOCIDAD</span>
+                        <div class="stat-bar-track"><div id="spd-bar" class="stat-bar-fill" style="width: 90%;"></div></div>
+                        <span id="spd-val" class="stat-value">90</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="keypad-section">
+                <div class="keypad-header">
+                    <span>MATRIZ DE ACCESO DIRECTO NUMÉRICO</span>
+                    <div class="keypad-actions">
+                        <button class="key-circle" id="key-clear">C</button>
+                        <button class="key-circle" id="key-enter">E</button>
+                    </div>
+                </div>
+                <div class="numeric-grid">
+                    <button class="num-key" data-num="1">1</button>
+                    <button class="num-key" data-num="2">2</button>
+                    <button class="num-key" data-num="3">3</button>
+                    <button class="num-key" data-num="4">4</button>
+                    <button class="num-key" data-num="5">5</button>
+                    <button class="num-key" data-num="6">6</button>
+                    <button class="num-key" data-num="7">7</button>
+                    <button class="num-key" data-num="8">8</button>
+                    <button class="num-key" data-num="9">9</button>
+                    <button class="num-key" data-num="0">0</button>
+                </div>
+            </div>
+
+            <div class="catalog-section">
+                <div class="catalog-header">
+                    <span>CATÁLOGO REGIONAL (#001 - #151)</span>
+                    <span>151 ESPECÍMENES</span>
+                </div>
+                <div class="catalog-grid" id="catalog-list">
+                </div>
+            </div>
+        </section>
     </main>
-    <footer>
-        <script type="module" src="./scripts.js"></script>
+
+    <footer class="bottom-terminal">
+        <span><span class="status-dot"></span> DEX VOICE: ACTIVE</span>
+        <span>REGISTERED: 151 / 151 KANTO INDEX</span>
+        <span>SILPH CO. & PROF. OAK LABS &bull; SYS VER 1.0.4-JP</span>
     </footer>
+
+    <script type="module" src="./scripts.js"></script>
 </body>
 </html>
